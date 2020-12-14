@@ -40,7 +40,7 @@ func NewMailer(sender, domain, key string) *Mailer {
 }
 
 // Send the recipient an encrypted email.
-func (m Mailer) Send(rcpt Recipient, subject string, message string) (string, error) {
+func (m Mailer) Send(rcpt *Recipient, subject string, message string) (string, error) {
 	armor, err := helper.EncryptMessageArmored(rcpt.Key, message)
 	if err != nil {
 		return "", err
